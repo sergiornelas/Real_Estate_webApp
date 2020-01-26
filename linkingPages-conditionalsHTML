@@ -1,0 +1,27 @@
+LINKING PAGES
+
+	<a href="{% url 'index' %}">
+	//this 'index' comes from:
+		appFolder/urls.py:
+			urlpatterns = [
+				path('', views.index, name='index'),
+				...
+			]
+
+	If you are in home page, highlight the 'home' text in the navbar:
+		<li
+                	{% if '/' == request.path %}
+		                class="nav-item active mr-3"
+	                {% else %}
+		                class="nav-item mr-3"
+	                {% endif %}
+		>
+	
+	If you are in about section, highlight the 'about' text in the navbar:
+		<li
+                	{% if 'about' in request.path %}
+				class="nav-item active mr-3"
+                	{% else %}
+		                class="nav-item mr-3"
+	                {% endif %}
+		>

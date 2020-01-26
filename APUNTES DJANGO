@@ -56,11 +56,16 @@ DJANGO COMMANDS
 
 Create an app
 	>> python manage.py startapp (creates a folder with default files)
-	
+
+Manual de ayuda
+	>> python manage.py help
+
 pip install pipenv
 	set up a virtual environment for each project you create
 	any packages you install including django will install in the created virtual
 	environment rather than the global system.
+
+
 
 python -m django --version
 	check django version

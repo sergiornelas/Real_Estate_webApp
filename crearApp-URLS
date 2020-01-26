@@ -1,0 +1,40 @@
+CREANDO UNA APP Y URLS
+
+1) Cuando crees una app, AGREGALA A LA LISTA DE APPS en mainFile/settings.py, busca la lista
+   de installed apps =[] y la pones la nueva app ahí:
+	<appName>.apps.<className de apps.py(folder de la app nueva)>
+		Nota: Cuando lo guardas, aparece en VSCODE un popup de autopep8. No lo instales.
+		Mejor instalalo en tu virtual env: pip install autopep8
+
+2) Dentro del folder de la app, CREAS MANUALMENTE UN FILE: urls.py. Importas la librería del mó-
+   dulo para crear paths:
+	from django.urls import path
+   También importas todo lo que se encuentre en el archivo views:
+	from . import views
+
+3) DEFINES LOS PATH que deseas relacionadas con la aplicación (urls.py):
+	urlpatterns = [
+		path('', views.index, name='index'),
+   		path('about', views.about, name='about'),
+			#first parameter: empty path means home directory like /
+			#second parameter: method we want to connect in the view file
+			#third parameter: name to easily access this path
+				#nota: ya deben estar creados los templates
+	]
+		Te saldrá un error, reconociendo que no existen los métodos declarados en el 			views.py.
+
+4) Dentro del views.py (nueva app) pones los módulos:
+	from django.shortcuts import render
+	from django.http import HttpResponse
+
+	DEFINES LOS MÉTODOS definidos en urls.py con 'request' como parámetro:
+		def index(request):
+			return render(request, 'pages/index.html')
+		def about(request):
+			return render(request, 'pages/about.html')
+
+5) Ahora en el urls.py (el del main project):
+	Ingresas el módulo include:
+		from django.urls import include #if you want to use 'include' keyword
+	Ingresas los paths creados en el urls.py de la app:
+		path('', include('pages.urls')), #'' = homepage.
