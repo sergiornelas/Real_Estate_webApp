@@ -4,12 +4,14 @@ CREANDO UNA APP Y URLS
    de installed apps =[] y la pones la nueva app ahí:
 	<appName>.apps.<className de apps.py(folder de la app nueva)>
 		Nota: Cuando lo guardas, aparece en VSCODE un popup de autopep8. No lo instales.
-		Mejor instalalo en tu virtual env: pip install autopep8
+			Mejor instalalo en tu virtual env: pip install autopep8
+		Nota2: Si es la primera vez que corres tu projecto, selecciona tu virtual environment
+		hasta abajo izquierda, aparecerá instalar el pylint, le das que si.
 
 2) Dentro del folder de la app, CREAS MANUALMENTE UN FILE: urls.py. Importas la librería del mó-
    dulo para crear paths:
 	from django.urls import path
-   También importas todo lo que se encuentre en el archivo views:
+   También importaremos todo lo que se encuentre en el archivo views:
 	from . import views
 
 3) DEFINES LOS PATH que deseas relacionadas con la aplicación (urls.py):

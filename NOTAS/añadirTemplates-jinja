@@ -1,0 +1,57 @@
+OUTPUT A TEMPLATE (HTML, CSS, JS files)
+
+1) Crear la carpeta de los templates (en el root, fuera de todas las carpetas al nivel de la    
+   carpeta principal)
+	Se sugiere que dentro de la carpeta de templates crees subcarpetas que representen a cada
+	aplicación del proyecto:
+		templates
+			pages
+				about.html
+				index.html
+			anotherApp
+			anotherApp
+	Si quieres agregar un encabezado, header, footer, cosas que se repetirán en cada página,
+	puedes crear un diseño base que aplique con todos (base.html):
+		templates
+			pages
+				about.html
+				index.html
+			base.html
+			anotherApp
+			anotherApp
+		//Si observas el file base.html esta a la altura de las carpetas de cada app.
+		//Dentro de base.html declaramos los 'bloques' donde se insertarán las páginas html:
+			<body>
+				{% block content %} {% endblock %}
+			</body>
+		//En cada file html usamos jinja syntax (lo usa django por default):
+			{% extends 'base.html' %}
+			{% block content %}
+				<Aqui el contenido de cada página>
+			{% endblock %}
+
+2) Tell to Django where the look for templates:
+	- In settings.py (main), busca el diccionario TEMPLATES = [].
+	- Dentro del diccionario, ve al diccionario DIRS e ingresa:
+		'DIRS': [os.path.join(BASE_DIR, '<folder name>')], #BASE_DIR = root directory
+
+3) En el archivo urls.py (dentro de la carpeta de la aplicación), definimos las rutas de los 
+   archivos de la carpeta de los templates: {paso 3 de 'crearApp-URLS'}.
+	No olvides crear los métodos en views.py de la app de las rutas nuevas creadas por cada
+	template (archivo HTML, etc.), {paso 4 de 'crearApp-URLS'}.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+

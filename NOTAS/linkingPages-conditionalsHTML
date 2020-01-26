@@ -1,6 +1,6 @@
 LINKING PAGES
 
-	<a href="{% url 'index' %}">
+	<a href="{% url 'index' %}0">
 	//this 'index' comes from:
 		appFolder/urls.py:
 			urlpatterns = [

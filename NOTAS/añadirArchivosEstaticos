@@ -1,0 +1,26 @@
+PARA AÑADIR ARCHIVOS ESTÁTICOS (ESTILOS CSS, IMÁGENES, ARCHIVOS JS) (en este caso los de traversy):
+
+1) Copias la carpeta /static dentro de la carpeta btre (main project).
+	La pegas dentro de la carpeta de tu main project (tu btre) (la que no tiene admin).
+2) En settings.py (main) hasta abajo agregas:
+	STATIC_ROOT= os.path.join(BASE_DIR, 'static')
+	STATIC_URL = '/static/'
+	STATICFILES_DIRS = [
+	    os.path.join(BASE_DIR, '<projectName>/static')
+	]
+3) Ejecutas python manage.py collectstatic
+	Se crea una carpeta llamada 'static' en el root, el cual tiene las cosas que pusimos en 
+	btre (main project folder), además se crea una carpeta admin estática.
+		#Nota: Cuando haces deploy, esa es la carpeta que busca 'static' que se creó en root.
+4) Poner esa carpeta estatica nueva de estilos en gitignore:
+	#added
+	venv
+	/static
+	/media (el media que ya existía, le agregamos el / al principio).
+5) Una vez puesto todos los estilos (links href, js scripts, etc) en base.html, debes poner
+   hasta mero arriba: {% load static %} para que cargue la carpeta de static root.
+   También:
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="{% static 'css/all.css' %}">
+		//Esto referencia en la carpeta static (que definimos en settings) tomará
+		el archivo all.css de la carpeta css (static root).

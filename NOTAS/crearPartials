@@ -1,0 +1,9 @@
+CREAR PARTIALS (HEADER, FOOTER EN DIFERENTES ARCHIVOS HTML).
+
+1) Dentro de la carpeta de templates, creas una carpeta llamada partials (a la altura de pages, 
+   base.html)
+2) Creas dentro de esa carpeta partials, los archivos html deseados, ya con su código.
+3) En base.html, debes llamar a esos partials:
+	<!-- Top bar -->
+	{% include 'partials/_topbar.html' %}
+	Nota: No se pueden comentar los comandos jinja (recuerda el navbar y footer).
