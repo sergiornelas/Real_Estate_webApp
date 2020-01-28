@@ -1,3 +1,5 @@
+POSTGRES INSTALLATION AND STUFF
+
 instalar postgres
 	sudo apt-get install postgresql postgresql-contrib
 
@@ -24,7 +26,6 @@ psql
 	visualizar las databses.
 
 ---------------
-
 entrar a la consola postgres con el usuario postgres
 	sudo -u postgres psql
 
@@ -56,9 +57,11 @@ Una vez ingresaste las credenciales de arriba correctamente, creas migraciones:
 
 ---------------
 CREATING LISTING MODEL
-	go to listings app (listing folder), open models.py. Every time you create an app, it creates
+	First, you need to define the database structure, then: Go to the app you want to create data:
+	Go to listings app (listing folder), open models.py. Every time you create an app, it creates
 	models.py file. Insert this:
 		class Listing(models.Model):
+			#ID is created automatically.
 			realtor = models.ForeignKey(Realtor, on_delete=models.DO_NOTHING)
 				#first parameter: name of the other model that we are relating
 				(Realtor).
@@ -66,7 +69,7 @@ CREATING LISTING MODEL
 				a realtor attached to a listing, and you delete the realtor what do
 				you want to happen to the listing? In this case, we don't want, so we
 				add '=models.DO_NOTHING')
-				YOU NEED TO INCLUDE the model at the top of the file:
+				YOU NEED TO INCLUDE the model at the top of the file (FORÁNEO):
 					from realtors.models import Realtor
 			title = models.CharField(max_length=200)
 				charfield = basic text field
@@ -83,6 +86,7 @@ CREATING LISTING MODEL
 				want inside of the media folder (media folder created automatically 
 				by django). We call the new folder 'photos', and we want each photo
 				going to a folder structure of the date (year, month, day).
+				YOU HAVE TO INSTALL PILLOW: 'pip install Pillow'
 			photo_2 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
 				The same from above, but this case is optional (blank=True)
 			is_published = models.BooleanField(default=True)
@@ -95,6 +99,35 @@ CREATING LISTING MODEL
 					def __str__(self):
 					        return self.title
 
-			
-	
+---------------
+MAKE MIGRATIONS
 
+python manage.py makemigrations
+	create a file that we can run, to then update the database. The file is gonna be created
+	inside migrations folder into current django app.
+python manage.py sqlmigrate <appname> 0001
+	(optional)
+	show sql language of creation the model (don't do anything)
+python manage.py migrate
+	Insert data to the tables of database!
+
+---------------
+CREATE A SUPER USER FOR LOGIN INTO DJANGO ADMIN
+	python manage.py createsuperuser
+		#username: brad
+		#email address: brad@gmail.com
+		#password: 123456
+
+---------------
+CUSTOMIZE ADMIN STUFF FOR AN APP
+	Show models sample into admin area (site administration)
+	Go to <appfolder> / admin.py
+		importa <model class name>: (hasta arriba del archivo)
+			from .models import Listing
+		then:
+			admin.site.register(<model class name>)
+			#admin.site.register(Listing)
+	Ahora, puedes llenar la tabla listing desde la interfaz de admin.
+
+---------------
+MEDIA FOLDER & ADDING DATA
