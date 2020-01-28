@@ -1,0 +1,100 @@
+instalar postgres
+	sudo apt-get install postgresql postgresql-contrib
+
+sudo su
+	entrar con root
+
+su - postgres
+	entrar con el super user postgres
+	#nota: la primera vez te pide ponerle contraseña al super user postgres
+
+sudo apt install pgadmin3
+	instalar pgadmin3 (herramienta de gestión)
+
+psql
+	inicializar postgres en la consola
+	ver la version de tu postgres
+
+\password postgres
+	cambiar la contraseña al usuario postgres
+
+\q
+	salir de postgres cuando se vea asi: postgres=#
+\l
+	visualizar las databses.
+
+---------------
+
+entrar a la consola postgres con el usuario postgres
+	sudo -u postgres psql
+
+
+correo y contraseña de postgres
+	postgres@localhost_
+	pass: 1234
+	pass nueva: plzthanx
+
+---------------
+CONNECTING DJANGO WITH POSTGRES
+
+Install these two packages:
+	pip install psycopg2
+	pip install psycopg2-binary
+
+Change settings.py:
+	DATABASES = {
+		'default': {
+			'ENGINE': 'django.db.backends.postgresql',
+	        	'NAME': 'btredb',
+		        'USER': 'postgres', #your user
+	        	'PASSWORD': 'plzthanx', #your pass
+		        'HOST': 'localhost' #your host
+		}
+	}
+Una vez ingresaste las credenciales de arriba correctamente, creas migraciones:
+	python manage.py migrate
+
+---------------
+CREATING LISTING MODEL
+	go to listings app (listing folder), open models.py. Every time you create an app, it creates
+	models.py file. Insert this:
+		class Listing(models.Model):
+			realtor = models.ForeignKey(Realtor, on_delete=models.DO_NOTHING)
+				#first parameter: name of the other model that we are relating
+				(Realtor).
+				#second parameter: what to do when you delete the realtor (if you have
+				a realtor attached to a listing, and you delete the realtor what do
+				you want to happen to the listing? In this case, we don't want, so we
+				add '=models.DO_NOTHING')
+				YOU NEED TO INCLUDE the model at the top of the file:
+					from realtors.models import Realtor
+			title = models.CharField(max_length=200)
+				charfield = basic text field
+			description = models.TextField(blank=True)
+				'blank=True' = this field is optional
+			price = models.IntegerField()
+				just an integer
+			bathrooms = models.DecimalField(max_digits=2, decimal_places=1)
+				baños = 1.5
+			garage = models.IntegerField(default=0)
+				Has a default value of 0
+			photo_main = models.ImageField(upload_to='photos/%Y/%m/%d/')
+				Where this get uploaded to. In this case we define the folder that we
+				want inside of the media folder (media folder created automatically 
+				by django). We call the new folder 'photos', and we want each photo
+				going to a folder structure of the date (year, month, day).
+			photo_2 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
+				The same from above, but this case is optional (blank=True)
+			is_published = models.BooleanField(default=True)
+				Boolean value
+			list_date = models.DateTimeField(default=datetime.now, blank=True)
+				default will be the current day in time
+				YOU NEED THE module datetime: 'from datetime import datetime'
+			If we want a main field to be displayed, in this will be title:
+				(inside of the class (no tab)):
+					def __str__(self):
+					        return self.title
+
+			
+	
+
