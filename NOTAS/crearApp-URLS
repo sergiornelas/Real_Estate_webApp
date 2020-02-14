@@ -5,17 +5,20 @@ CREANDO UNA APP Y URLS
 	<appName>.apps.<className de apps.py(folder de la app nueva)>
 		Nota: Cuando lo guardas, aparece en VSCODE un popup de autopep8. No lo instales.
 			Mejor instalalo en tu virtual env: pip install autopep8
-		Nota2: Si es la primera vez que corres tu projecto, selecciona tu virtual environment
+		Nota 2: Si es la primera vez que corres tu projecto, selecciona tu virtual environment
 		hasta abajo izquierda, aparecerá instalar el pylint, le das que si.
+		Nota 3: No olvides colocar una coma ',' al final.
 
-2) Dentro del folder de la app, CREAS MANUALMENTE UN FILE: urls.py. Importas la librería del mó-
-   dulo para crear paths:
+2) Dentro del folder de la app, CREAS MANUALMENTE UN FILE: urls.py. Importas la librería del módulo 
+   para crear paths:
 	from django.urls import path
    También importaremos todo lo que se encuentre en el archivo views:
 	from . import views
 
 3) DEFINES LOS PATH que deseas relacionadas con la aplicación (urls.py):
 	urlpatterns = [
+		path('<urlHijo>', views.<methodViewsFile>, name='<nombreParaReferenciarlo>')
+
 		path('', views.index, name='index'),
    		path('about', views.about, name='about'),
 			#first parameter: empty path means home directory like /
@@ -32,11 +35,13 @@ CREANDO UNA APP Y URLS
 	DEFINES LOS MÉTODOS definidos en urls.py con 'request' como parámetro:
 		def index(request):
 			return render(request, 'pages/index.html')
-		def about(request):
-			return render(request, 'pages/about.html')
+		def <desiredMethodName>(request):
+			return render(request, '<folderName>/<htmlFile>')
+				#en folder name: donde se encuentra el archivo htlm a renderear.
 
-5) Ahora en el urls.py (el del main project):
+5) Ahora en el urls.py (el del main project) DEFINIMOS LOS URL DE VERDAD de la página:
 	Ingresas el módulo include:
 		from django.urls import include #if you want to use 'include' keyword
 	Ingresas los paths creados en el urls.py de la app:
-		path('', include('pages.urls')), #'' = homepage.
+		path('<urlDeseado/>', include('<appName>.urls')), #'' = homepage.
+			#no olvides el slash al final.

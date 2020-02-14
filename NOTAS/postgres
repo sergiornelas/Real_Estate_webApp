@@ -98,6 +98,12 @@ CREATING LISTING MODEL
 				(inside of the class (no tab)):
 					def __str__(self):
 					        return self.title
+			table that is gonna display each element of the table
+				you have to pick a field to be kind of the main field
+				to be displayed
+				Works when is a foreign key too (media folder & adding data 5:15)!
+					def __str__(self):
+						return self.title
 
 ---------------
 MAKE MIGRATIONS
@@ -122,11 +128,11 @@ CREATE A SUPER USER FOR LOGIN INTO DJANGO ADMIN
 CUSTOMIZE ADMIN STUFF FOR AN APP
 	Show models sample into admin area (site administration)
 	Go to <appfolder> / admin.py
-		importa <model class name>: (hasta arriba del archivo)
+		from .models import <model class name> (hasta arriba del archivo)
 			from .models import Listing
 		then:
 			admin.site.register(<model class name>)
-			#admin.site.register(Listing)
+				#admin.site.register(Listing)
 	Ahora, puedes llenar la tabla listing desde la interfaz de admin.
 
 ---------------
