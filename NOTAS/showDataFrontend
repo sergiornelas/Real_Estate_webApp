@@ -1,0 +1,26 @@
+<app> / views.py (donde esta los url)
+
+#insertar lo siguiente:
+
+from .models import <model class name>
+	//from .models import Listing
+
+#dentro de la página que quieres que aparezcan los datos de la base de datos:
+def index(request):
+
+    listings = Listing.objects.all() //agarramos todos los objetos (elementos de bases de datos)
+				     //los almacenamos en la variable listings
+
+    context = {			    //en el diccionario context, en el campo string 'listings'
+				    //añadimos los valores de la variable listings.
+        'listings': listings
+    }
+
+    return render(request, 'listings/listings.html', context)
+							//añadimos el diccionario context en el render
+							//para señalar que esta declarado, listo
+							// para usarse.
+
+Te saldrá un error, debes instalar esto:
+	pip install pylint-django
+	https://stackoverflow.com/questions/45135263/class-has-no-objects-member
