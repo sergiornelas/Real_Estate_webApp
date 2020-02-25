@@ -1,0 +1,17 @@
+en <app folder> / admin.py
+	
+class ListingAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title', 'is_published', 'price','list_date', 'realtor')
+	//muestra mas campos.
+    list_display_links = ('id', 'title')
+	// cuando le des click a los campos id y titulo, te lleva a la información detallada.
+    list_filter = ('realtor',)
+	// cuando des click en el campo de realtor, agrega un filtrador (orden alfabetico, etc)
+    list_editable = ('is_published',)
+	// puedes editar el campo desde ahí mismo, sin necesidad de entrar al apartado específico.
+    search_fields = ('title', 'description', 'address', 'city', 'state', 'zipcode', 'price')
+	// se agrega una barra de entrada para buscar a partir de los campos seleccionados.
+    list_per_page = 5
+	// aparece solo 5 elementos en la página. Es paginación
+En admin.site.register se agregó la clase de arriba:
+	admin.site.register(Listing, ListingAdmin)

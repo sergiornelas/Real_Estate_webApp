@@ -136,4 +136,11 @@ CUSTOMIZE ADMIN STUFF FOR AN APP
 	Ahora, puedes llenar la tabla listing desde la interfaz de admin.
 
 ---------------
+ME TRABÉ AQUI:
+Cuando quieras rehacer la base de datos:
+- Asegúrate de borrar los archivos de migrations (excepto __init__.py). Usa refresh para asegurar!
+- Los campos de llaves foráneas no se pueden borrar 
+
+
+
 MEDIA FOLDER & ADDING DATA
