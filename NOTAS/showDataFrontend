@@ -2,6 +2,7 @@
 
 #insertar lo siguiente:
 
+#import data from app model
 from .models import <model class name>
 	//from .models import Listing
 
@@ -24,3 +25,16 @@ def index(request):
 Te saldrá un error, debes instalar esto:
 	pip install pylint-django
 	https://stackoverflow.com/questions/45135263/class-has-no-objects-member
+
+
+************
+si quieres agregar una coma al precio:
+	mainproject/settings.py/sección de installed_apps
+		pegas: 'django.contrib.humanize'
+	.../dirigete en donde se encuentra el archivo donde quieres separar algo por comas
+		Hasta arriba (justo debajo del extends si es que tiene):
+			{% load humanize %}
+		listo, se agrega el precio.
+			${{ listing.price | intcomma }}
+		también se agrega hace cuánto tiempo se agregó el elemento:
+			{{ listing.list_date | timesince }}

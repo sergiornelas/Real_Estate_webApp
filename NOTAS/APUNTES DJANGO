@@ -173,6 +173,4 @@ PARA LA CASA:
 		install linter pylint
 			le das que si.
 
-----------------------------------------------------------------------------------
-PARA IBM
-	
+#pagination, order & filter

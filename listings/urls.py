@@ -10,6 +10,6 @@ urlpatterns = [
     #third parameter: name to easily access this path
     
     path('', views.index, name='listings'),
-    path('<int:listing_id>', views.listing, name='listing'),
+    path('<int:listing_id>', views.listing, name='listing'), #views.listing refers to the listing method.
     path('search', views.search, name='search'),
 ]
