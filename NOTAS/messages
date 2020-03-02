@@ -1,0 +1,38 @@
+------ MESSAGES -----
+1) Añade esto a setttings.py del main, hasta abajo.
+# Messages
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger'
+}
+
+2) Creamos la pagina llamada _alerts.html, dentro de partials
+	le ponemos su contenido <copia-pega>
+
+3) en el views.py de la app <accounts> agregamos esto a la función register:
+	#message alerts
+	from django.contrib import messages
+	
+	def register(request):
+		if request.method == 'POST':
+			#message alerts
+			messages.error(request, 'Testing error message')
+			return redirect('register')
+			#
+			else:
+				return render(request, 'accounts/register.html')
+
+4) en el formulario que queremos que salgan los mensajes añadimos esto:
+	<div class="card-body">
+		<!-- Alerts -->
+		{% include 'partials/_alerts.html' %}
+
+5) en el file de mainProject/static/js/main.js poner esto hasta abajo.
+	setTimeout(function() {
+		$('#message').fadeOut('slow');
+	}, 3000);
+
+6) en la terminal:
+	python manage.py collectstatic
+
+

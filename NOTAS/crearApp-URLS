@@ -15,7 +15,7 @@ CREANDO UNA APP Y URLS
    También importaremos todo lo que se encuentre en el archivo views:
 	from . import views
 
-3) DEFINES LOS PATH que deseas relacionadas con la aplicación (urls.py):
+3) DEFINES LOS PATH que deseas relacionadas con la aplicación (urls.py), ESTOS SON LOS CHILD PATH:
 	urlpatterns = [
 		path('<urlHijo>', views.<methodViewsFile>, name='<nombreParaReferenciarlo>')
 
@@ -39,9 +39,28 @@ CREANDO UNA APP Y URLS
 			return render(request, '<folderName>/<htmlFile>')
 				#en folder name: donde se encuentra el archivo htlm a renderear.
 
-5) Ahora en el urls.py (el del main project) DEFINIMOS LOS URL DE VERDAD de la página:
+5) Ahora en el urls.py (el del main project) DEFINIMOS LOS URL DE VERDAD de la página, ESTOS SON LOS ROOT PATH:
 	Ingresas el módulo include:
 		from django.urls import include #if you want to use 'include' keyword
 	Ingresas los paths creados en el urls.py de la app:
 		path('<urlDeseado/>', include('<appName>.urls')), #'' = homepage.
 			#no olvides el slash al final.
+
+----------------------------------------------------------------------------------------------
+dentro de views.py de cualquier aplicación, si quieres hacer una función
+para crear un url, y el archivo html se encuentra dentro de la carpeta
+templates pero fuera de una carpeta dentro de templates, entonces la puedes
+referir de esta manera:
+	def test(request):
+		return render(request, './base.html')
+
+----------------------------------------------------------------------------------------------
+HACIENDO EL TEMPLATE TEST, TE TRABASTE CON ESTO:
+path('test', views.test, name='test'),
+cuando con eso realmente no le estabas asignando un url, sino un url hijo, es decir que para llegar a esa ruta
+tendrías que acceder de esta manera:
+	http://localhost:8000/test/test
+
+la solución que te llevara al index de ESA APLICACIÓN:
+path('', views.test, name='test'),
+

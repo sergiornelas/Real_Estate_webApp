@@ -1,14 +1,8 @@
-from django.shortcuts import render, redirect
+1) se añade estas librerías:
+	from django.contrib.auth.models import User
+	from django.contrib import auth
 
-#message alerts
-from django.contrib import messages
-
-#user registration, model 
-from django.contrib.auth.models import User
-
-#user registration, login after register
-from django.contrib import auth
-
+2) 
 def register(request):
     if request.method == 'POST':
         #Get form values
@@ -48,17 +42,3 @@ def register(request):
             return redirect('register')
     else:
         return render(request, 'accounts/register.html')
-
-def login(request):
-    if request.method == 'POST':
-        #Login User
-        return
-    else:
-        return render(request, 'accounts/login.html')
-
-#función que redirige a una pagina, no la renderea
-def logout(request):
-    return redirect('index')
-
-def dashboard(request):
-    return render(request, 'accounts/dashboard.html')

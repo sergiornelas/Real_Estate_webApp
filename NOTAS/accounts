@@ -30,33 +30,3 @@ when you have a form and you are making a post request you have to add a CSRF to
 It's for avoiding falsificación por seguridad. ' falsificación de petición en sitios cruzados'
 	<form action="{% url 'login' %}" method="POST">
 		{% csrf_token %}
-
------- MESSAGES -----
-1) Añade esto a setttings.py del main, hasta abajo.
-# Messages
-from django.contrib.messages import constants as messages
-MESSAGE_TAGS = {
-    messages.ERROR: 'danger'
-}
-
-2) Creamos la pagina llamada _alerts.html
-	le ponemos su contenido <copia-pega>
-
-3) en el views.py de la app <accounts> agregamos esto a la función register:
-	#message alerts
-	from django.contrib import messages
-	
-	def register(request):
-		if request.method == 'POST':
-			#message alerts
-			messages.error(request, 'Testing error message')
-			return redirect('register')
-			#
-			else:
-				return render(request, 'accounts/register.html')
-
-4) en el formulario que queremos que salgan los mensajes añadimos esto:
-	<div class="card-body">
-		<!-- Alerts -->
-		{% include 'partials/_alerts.html' %}
-
