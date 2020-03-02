@@ -1,0 +1,32 @@
+Esta función de las vistas de las url (views.py) es diferente a las que hemos trabajado. Esta función no te renderea una página, sino
+su funcionalidad es para que el usuario haga logout:
+
+from django.shortcuts import render, redirect
+
+	def logout(request):
+		return redirect('index')
+
+*Como norma, una vez creaste nuevas url en una aplicación, no olvides agregar esas nuevas urls en el archivo urls.py del main.*
+
+Para que se muestre en el navbar el nombre del usuario cuando esta logeado:
+	<ul class="navbar-nav ml-auto">
+		<li 
+			{% if 'register' in request.path %}
+				class="nav-item active mr-3" 
+		        {% else %}
+				class="nav-item mr-3"
+			{% endif %}
+        	>
+        		 <a class="nav-link" href="{% url 'register' %}">
+        	 <i class="fas fa-user-plus"></i> Register</a>
+        	</li>
+	</ul>
+
+Dentro de un formulario, si quieres que se envien esos datos a una base de datos o al sever utiliza POST method.
+'POST is used to send data to a server to create/update a resource.'
+	<form action="{% url 'login' %}" method="POST">
+
+when you have a form and you are making a post request you have to add a CSRF token. Ties you form to the user current session.
+It's for avoiding falsificación por seguridad. ' falsificación de petición en sitios cruzados'
+	<form action="{% url 'login' %}" method="POST">
+		{% csrf_token %}

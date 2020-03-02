@@ -14,6 +14,7 @@ def index(request):
                                                 #pull data from listings model
     return render(request, 'listings/listings.html', context)
 
+#para mostra la información detallada de cada elemento
 def listing(request, listing_id):
     return render(request, 'listings/listing.html')
  
