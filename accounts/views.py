@@ -1,10 +1,14 @@
 from django.shortcuts import render, redirect
 
-def register(request):
+#message alerts
+from django.contrib import messages
 
+def register(request):
     if request.method == 'POST':
-        #Register User
-        return
+        #message alerts
+        messages.error(request, 'Testing error message')
+        return redirect('register')
+        #
     else:
         return render(request, 'accounts/register.html')
 
