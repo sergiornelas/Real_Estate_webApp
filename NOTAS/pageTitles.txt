@@ -1,0 +1,8 @@
+Colocar esto en el base.html
+
+<title>BT Real Estate {% block title %}{% endblock %}</title>
+</head>
+	justo arriba del head.
+
+colocar esto casi hasta arriba (checar en btre project):
+	{% block title %} | Account Login {% endblock %}
