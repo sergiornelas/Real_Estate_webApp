@@ -1,0 +1,6 @@
+1) creas la aplicación donde tendrá el modelo de los contactos
+2) creas el modelo (BD).
+3) Activas la app en main/settings.py
+4) python manage.py makemigrations contacts
+	(puedes hacer la migración solo de un modelo en específico?)
+
