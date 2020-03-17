@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
+    # es un paquete que hace si un objeto es inexistente (algún id falso), mande
+    #    por default un error 404
 
 #pull data from listings model
 from .models import Listing
@@ -15,8 +17,16 @@ def index(request):
     return render(request, 'listings/listings.html', context)
 
 #para mostra la información detallada de cada elemento
+#AQUI SE MUESTRA COMO MOSTRAR LOS DATOS ESPECÍFICOS DE UN ID!!!
+#VEASE URLS.PY PARA VER LA OTRA PARTE!
 def listing(request, listing_id):
-    return render(request, 'listings/listing.html')
+    listing = get_object_or_404(Listing, pk=listing_id) 
+        #pk=listing_id se refiere al mismo listing_id segundo parámetro de la función.
+
+    context = {
+        'listing': listing
+    }
+    return render(request, 'listings/listing.html', context)
  
 def search(request):
     return render(request, 'listings/search.html')

@@ -3,4 +3,5 @@
 3) Activas la app en main/settings.py
 4) python manage.py makemigrations contacts
 	(puedes hacer la migración solo de un modelo en específico?)
+5) python manage.py migrate
 
