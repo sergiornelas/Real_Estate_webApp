@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.core.mail import send_mail
+#from django.core.mail import send_mail
 
-from django.conf import settings
+#from django.conf import settings
 
 from .models import Contact
 
@@ -31,13 +31,13 @@ def contact(request):
         contact.save()
 
         #Send email
-        send_mail(
-            'Property Listing Inquiry',
-            'There has been an inquiry for ' + listing + '. Sign into the admin panel for more info',
-            'sergio.ibm.ornelas@gmail.com',
-            [realtor_email, 'techguyinfo@gmail.com'],
-            fail_silently=False
-        )
-
+        #send_mail(
+        #    'Property Listing Inquiry',
+        #    'There has been an inquiry for ' + listing + '. Sign into the admin panel for more info',
+        #    'sergio.ibm.ornelas@gmail.com',
+        #    [realtor_email, 'techguyinfo@gmail.com'],
+        #    fail_silently=False
+        #)
+        # el otro archivo que se tiene que descomentar para el email es settings.py
         messages.success(request, "Your request has been submitted, a realtor will get back to you soon")
         return redirect('/listings/'+listing_id)

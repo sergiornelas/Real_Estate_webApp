@@ -147,10 +147,8 @@ MESSAGE_TAGS = {
 
 #Email config
 
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER='sergio.ibm.ornelas@gmail.com'
-EMAIL_HOST_PASSWORD='zapato.123' #gmail password
-EMAIL_USE_TLS=True
-
-#sergio.ibm.ornelas@gmail.com
+#EMAIL_HOST = 'smtp.gmail.com'
+#EMAIL_PORT = 587
+#EMAIL_HOST_USER='sergio.ibm.ornelas@gmail.com'
+#EMAIL_HOST_PASSWORD='zapato.123'
+#EMAIL_USE_TLS=True

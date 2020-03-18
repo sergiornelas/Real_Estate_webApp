@@ -9,6 +9,9 @@ from django.contrib.auth.models import User
 #user registration, login after register
 from django.contrib import auth
 
+#contacts model from database
+from contacts.models import Contact
+
 def register(request):
     if request.method == 'POST':
         #Get form values
@@ -76,4 +79,9 @@ def logout(request):
         return redirect('index')
 
 def dashboard(request):
-    return render(request, 'accounts/dashboard.html')
+    #se ordena desde el más reciente, filter user id es para no mostrar todos, sino solamente el del id actual!!!!
+    user_contacts = Contact.objects.order_by('-contact_date').filter(user_id=request.user.id)
+    context = {
+        'contacts': user_contacts
+    }
+    return render(request, 'accounts/dashboard.html', context)
