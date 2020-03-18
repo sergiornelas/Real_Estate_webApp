@@ -7,14 +7,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    #
     path('', include('pages.urls')), #linking the urls.py of the pages app. #'' = homepage
     path('listings/', include('listings.urls')),
-    #
-    path('admin/', admin.site.urls),
-
-    #accounts,app & urls
     path('accounts/', include('accounts.urls')),
-    
-    #new added
+    path('contacts/', include('contacts.urls')),
+    path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
