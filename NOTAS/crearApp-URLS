@@ -1,5 +1,7 @@
 CREANDO UNA APP Y URLS
 
+python manage.py startapp <projectApp>
+
 1) Cuando crees una app, AGREGALA A LA LISTA DE APPS en mainFile/settings.py, busca la lista
    de installed apps =[] y la pones la nueva app ahí:
 	<appName>.apps.<className de apps.py(folder de la app nueva)>

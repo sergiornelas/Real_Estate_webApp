@@ -8,7 +8,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('', include('pages.urls')), #linking the urls.py of the pages app. #'' = homepage
-    path('listings/', include('listings.urls')),
+    #path('listings/', include('listings.urls')),
+    path('listingsXX/', include('listings.urls')),
     path('accounts/', include('accounts.urls')),
     path('contacts/', include('contacts.urls')),
     path('admin/', admin.site.urls),

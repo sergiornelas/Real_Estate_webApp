@@ -5,5 +5,5 @@ from django.http import HttpResponse
 def index(request):
     return render(request, 'pages/index.html')
 
-def about(request):
+def zoo(request):
     return render(request, 'pages/about.html')

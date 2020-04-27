@@ -9,5 +9,5 @@ urlpatterns = [
     #second parameter: method we want to connect in the view file
     #third parameter: name to easily access this path
     path('', views.index, name='index'),
-    path('about', views.about, name='about'),
+    path('sobre', views.zoo, name='about'),
 ]

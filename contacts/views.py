@@ -8,27 +8,30 @@ from .models import Contact
 
 def contact(request):
     if request.method == 'POST':
-        listing_id = request.POST['listing_id']
-        listing = request.POST['listing']
-        name = request.POST['name']
-        email = request.POST['email']
-        phone = request.POST['phone']
-        message = request.POST['message']
-        user_id = request.POST['user_id']
-        realtor_email = request.POST['realtor_email']
+        listing_id = request.POST['id_listado']
+        listing = request.POST['listado']
+        
+        name = request.POST['nombre']
+        email = request.POST['correo']
+        phone = request.POST['fono']
+        message = request.POST['mensaje']
+
+        #este es solamente cuando se esta haciendo el contact con login.
+        user_id = request.POST['id_usuario']
+        realtor_email = request.POST['correo_realtor']
 
         #Check if user has made inquiry already
-        if request.user.is_authenticated:
-            user_id = request.user.id
-            has_contacted = Contact.objects.all().filter(listing_id=listing_id, user_id=user_id)
-            if has_contacted:
-                messages.error(request, 'You have already made an inquiry for this listing')
-                return redirect('/listings/'+listing_id)
+        # if request.user.is_authenticated:
+        #     user_id = request.user.id
+        #     has_contacted = Contact.objects.all().filter(listing_id=listing_id, user_id=user_id)
+        #     if has_contacted:
+        #         messages.error(request, 'You have already made an inquiry for this listing')
+        #         return redirect('/listings/'+listing_id)
 
-        contact = Contact(listing=listing, listing_id=listing_id, name=name, email=email,
+        contactVar = Contact(listing=listing, listing_id=listing_id, name=name, email=email,
         phone=phone, message=message, user_id=user_id )
 
-        contact.save()
+        contactVar.save()
 
         #Send email
         #send_mail(
@@ -40,4 +43,5 @@ def contact(request):
         #)
         # el otro archivo que se tiene que descomentar para el email es settings.py
         messages.success(request, "Your request has been submitted, a realtor will get back to you soon")
-        return redirect('/listings/'+listing_id)
+        
+        return redirect('/listingsXX/'+listing_id)

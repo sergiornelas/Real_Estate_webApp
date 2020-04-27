@@ -9,8 +9,11 @@ urlpatterns = [
     #second parameter: method we want to connect in the view file
     #third parameter: name to easily access this path
     
-    path('', views.index, name='listings'),
-    path('<int:listing_id>', views.listing, name='listing'), #views.listing refers to the listing method.
+    path('', views.index, name='listingZ'),
+    
+    path('<int:lizzting_id>', views.listingT, name='listingC'), #views.listing refers to the listing method.
+    #path('listing', views.listing, name='listing'), #views.listing refers to the listing method.
+
         #pk=listing_id de views.py
         #<int:listing_id> es el 2 de: http://localhost:8000/listings/2
     path('search', views.search, name='search'),

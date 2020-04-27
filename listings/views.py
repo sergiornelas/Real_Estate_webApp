@@ -7,11 +7,11 @@ from .models import Listing
 
 def index(request):
     #pull data from listings model
-    listings = Listing.objects.all()
+    listingsX = Listing.objects.all()
 
     #pull data from listings model
     context = {
-        'listings': listings
+        'listingsY': listingsX
     }
                                                 #pull data from listings model
     return render(request, 'listings/listings.html', context)
@@ -19,14 +19,20 @@ def index(request):
 #para mostra la información detallada de cada elemento
 #AQUI SE MUESTRA COMO MOSTRAR LOS DATOS ESPECÍFICOS DE UN ID!!!
 #VEASE URLS.PY PARA VER LA OTRA PARTE!
-def listing(request, listing_id):
-    listing = get_object_or_404(Listing, pk=listing_id) 
+def listingT(request, lizzting_id):
+    listingVar = get_object_or_404(Listing, pk=lizzting_id) 
         #pk=listing_id se refiere al mismo listing_id segundo parámetro de la función.
 
     context = {
-        'listing': listing
+        'listingAA': listingVar
     }
     return render(request, 'listings/listing.html', context)
+ 
+
+
+
+
+
  
 def search(request):
     return render(request, 'listings/search.html')
