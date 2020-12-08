@@ -3,7 +3,8 @@
 ## What I learned:
 - Python fundamentals
 - Apps, URLs & Templates
-- Models, Migrations & Admin
+- Models, Migrations with PostgreSQL
+- Admin area
 - View Methods, Display & Search
 - Accounts & Authentication
 
