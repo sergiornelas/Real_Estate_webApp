@@ -1,6 +1,7 @@
 # Django Real Estate Project
 
 ## What I learned:
+- Bootstrap
 - Python fundamentals
 - Apps, URLs & Templates
 - Models, Migrations with PostgreSQL
